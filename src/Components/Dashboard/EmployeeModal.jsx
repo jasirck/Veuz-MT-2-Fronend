@@ -9,7 +9,10 @@ function EmployeeModal({ onClose, onSubmit }) {
     name: '',
     email: '',
     position: '',
+    is_admin: false, // Add is_admin field
     custom_fields: [],
+    password: '',
+    confirm_password: '',
   });
   const [customField, setCustomField] = useState({ field_name: '', field_type: 'text', field_value: '' });
   const [errorMessage, setErrorMessage] = useState('');
@@ -54,6 +57,12 @@ function EmployeeModal({ onClose, onSubmit }) {
     e.preventDefault();
     setErrorMessage('');
 
+    // Validate passwords
+    if (formData.password !== formData.confirm_password) {
+      setErrorMessage('Passwords do not match.');
+      return;
+    }
+
     if (!formData.name || !formData.email || !formData.position) {
       setErrorMessage('Please fill in all required fields.');
       return;
@@ -62,11 +71,11 @@ function EmployeeModal({ onClose, onSubmit }) {
     try {
       const response = await axios.post('employees/', formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      });      
+      });
 
       onSubmit(response.data);
       Swal.fire('Success!', 'Employee created successfully.', 'success');
-      setFormData({ name: '', email: '', position: '', custom_fields: [] });
+      setFormData({ name: '', email: '', position: '', is_admin: false, custom_fields: [], password: '', confirm_password: '' });
       onClose();
     } catch (error) {
       setErrorMessage('Error creating employee: ' + (error.response?.data?.detail || error.message));
@@ -90,6 +99,22 @@ function EmployeeModal({ onClose, onSubmit }) {
           <div className="input-group">
             <label>Position</label>
             <input type="text" name="position" value={formData.position} onChange={handleChange} required />
+          </div>
+
+          {/* Password Fields */}
+          <div className="input-group">
+            <label>Password</label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+          </div>
+          <div className="input-group">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} required />
+          </div>
+
+          {/* Admin Field */}
+          <div className="input-group">
+            <label>Is Admin</label>
+            <input type="checkbox" name="is_admin" checked={formData.is_admin} onChange={(e) => setFormData({ ...formData, is_admin: e.target.checked })} />
           </div>
 
           {/* Custom Fields */}

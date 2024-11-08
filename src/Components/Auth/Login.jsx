@@ -28,11 +28,10 @@ function Login() {
         password: User.password 
       });
       
-      const { access } = response.data; 
-      console.log(response);
-      
-      dispatch(login({ user: User.email, token: access })); 
-      console.log(User, access);
+      const { access, name, is_admin } = response.data; 
+      console.log( access, name, is_admin )
+      // Store the data in the Redux store
+      dispatch(login({ user: name, token: access, is_admin }));  
       
       navigate('dashboard'); 
     } catch (error) {

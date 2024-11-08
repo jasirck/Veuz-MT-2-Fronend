@@ -1,0 +1,93 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 20px 25px;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+/* Label and Input Styling */
+.modal-content label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #555;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.modal-content input:focus {
+  border-color: #007bff;
+}
+
+/* Button Group */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.save-button, .close-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+/* Save Button */
+.save-button {
+  background-color: #28a745;
+  color: white;
+  margin-right: 10px;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+/* Close Button */
+.close-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.close-button:hover {
+  background-color: #c82333;
+}

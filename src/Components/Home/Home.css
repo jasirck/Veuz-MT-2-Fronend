@@ -1,16 +1,19 @@
-/* General styles */
+/* General Styles */
 .home-container {
   padding: 20px;
   font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
 }
 
-/* Navbar styles */
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color:#5a6268;
+  background-color: #343a40;
   color: white;
+  align-items: center;
+  border-radius: 8px;
 }
 
 .navbar-links {
@@ -20,64 +23,102 @@
 
 .navbar-link {
   text-decoration: none;
-  color: white;
+  color: #e9ecef;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .navbar-link:hover {
-  color: #f0f0f0;
+  color: #adb5bd;
 }
 
-/* Profile icon */
+/* Profile Icon */
 .navbar-profile .profile-icon {
   border-radius: 50%;
   cursor: pointer;
   width: 40px;
   height: 40px;
+  border: 2px solid #e9ecef;
+  transition: border-color 0.3s ease;
 }
 
-/* Header styles */
+.navbar-profile .profile-icon:hover {
+  border-color: #adb5bd;
+}
+
+/* Header Styles */
 .header {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 24px;
+  color: #343a40;
+  font-weight: 700;
 }
 
-/* JWT Card styles */
+/* JWT Card Styles */
 .jwt-card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 10px;
   padding: 20px;
   margin: 20px auto;
-  width: 60%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jwt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .jwt-card h2 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #495057;
 }
 
 .jwt-card p {
   text-align: justify;
   line-height: 1.6;
   font-size: 16px;
+  color: #6c757d;
 }
 
-/* Action Button styles */
+/* Action Button Styles */
 .actions {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-top: 20px;
 }
 
-.profile-button {
+.profile-button,
+.logout-button {
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  background-color: #6c757d;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  border: none;
+  outline: none;
   color: white;
 }
 
+.profile-button {
+  background-color: #007bff;
+}
+
+.profile-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  background-color: #dc3545;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}

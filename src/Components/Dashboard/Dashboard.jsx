@@ -33,6 +33,8 @@ function Dashboard() {
                 },
                 params: { search: searchTerm }  
             });
+            console.log(response.data);
+            
             setEmployees(response.data);
         } catch (error) {
             console.error('Error fetching employee data:', error);

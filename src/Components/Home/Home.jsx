@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';  // Import dispatch
+import { useDispatch, useSelector } from 'react-redux';  // Import dispatch
 import { logout } from '../toolkit/Slice';
 import './Home.css'; // Import the updated CSS for styling
 
 function Home() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();  // Get the dispatch function
+  const dispatch = useDispatch();
+  const { token, user } = useSelector((state) => state.authReducer);
 
   const navigateToProfile = () => {
     navigate('/profile');
   };
+  useEffect(() => {
+    if (!token) {
+      console.log(token,'tocken');
+      
+      navigate('/');
+    }else{
+      console.log(token,user,'tocken');
+      
+    }
+  }, [token, navigate]);
 
   const handleLogout = () => {
     dispatch(logout());  // Dispatch logout action
@@ -44,7 +55,7 @@ function Home() {
 
       {/* Header Section */}
       <div className="header">
-        <h1>Welcome to the Employee Management System</h1>
+        <h1>Welcome {user} to the Employee Management System</h1>
       </div>
 
       {/* Card about JWT */}

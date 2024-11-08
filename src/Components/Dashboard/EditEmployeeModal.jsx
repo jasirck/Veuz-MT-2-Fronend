@@ -2,12 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../Api';
 import './EditEmployeeModal.css';
+import { useSelector } from 'react-redux';
 
 function EditEmployeeModal({ employee, onClose, onUpdate }) {
   const [formData, setFormData] = useState(employee || { custom_fields: [] });
+  const { token } = useSelector((state) => state.authReducer);
+
 
   useEffect(() => {
     if (employee) {
+      console.log(employee);
+      
       setFormData(employee);
     }
   }, [employee]);
@@ -35,14 +40,19 @@ function EditEmployeeModal({ employee, onClose, onUpdate }) {
   };
 
   const handleSave = async () => {
+    console.log('save');
+    
     if (!formData.id) {
       console.error("Employee ID is undefined!");
       return;
     }
-
+  
     try {
       const response = await axios.put(`employees/${formData.id}/`, formData, {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' 
+        },
       });
       onUpdate(response.data); // Update the parent component with the new data
       onClose(); // Close the modal after saving
@@ -50,7 +60,7 @@ function EditEmployeeModal({ employee, onClose, onUpdate }) {
       console.error("Error updating employee:", error);
     }
   };
-
+  
   return (
     <div className="modal-overlay">
       <div className="modal-container">
