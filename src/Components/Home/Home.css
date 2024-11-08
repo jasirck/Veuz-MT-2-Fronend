@@ -1,0 +1,83 @@
+/* General styles */
+.home-container {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color:#5a6268;
+  color: white;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar-link:hover {
+  color: #f0f0f0;
+}
+
+/* Profile icon */
+.navbar-profile .profile-icon {
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* JWT Card styles */
+.jwt-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 60%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.jwt-card h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.jwt-card p {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Action Button styles */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.profile-button {
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: #6c757d;
+  color: white;
+}
+
